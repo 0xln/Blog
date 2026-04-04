@@ -18,7 +18,7 @@ post_navigation: true
 color_image: /assets/img/lineart.png                    # A bit transparent for color posts.
 
 # Features
-# More in the _data folder for share buttons, author and language
+# More in the _data folder for comments, share buttons, author and language
 # For layout customization, go to the "_sass > base" folder, and check "_variables.scss"
 katex: false                                             # Enable if using math markup
 mermaid: true                                           # Enable mermaid-js for sequence and diagrams
@@ -47,8 +47,26 @@ collections:
 # BUILD SETTINGS
 sass:
   style: compressed
+  quiet_deps: true
 plugins: [jekyll-paginate, jekyll-seo-tag, jekyll-feed]
-exclude: [".jekyll-cache", ".idea", "vendor/*", "assets/node_modules/*"]
+exclude:
+  - ".idea"
+  - ".jekyll-cache"
+  - ".jekyll-metadata"
+  - ".sass-cache"
+  - "Gemfile"
+  - "Gemfile.lock"
+  - "type-on-strap.gemspec"
+  - "vendor"
+  - "node_modules"
+  - "assets/node_modules"
+  - "assets/Dockerfile"
+  - "package.json"
+  - "package-lock.json"
+  - "README.md"
+  - "LICENSE"
+  - ".github"
+  - "test-results"
 
 # theme: type-on-strap                                  # if using the theme as a jekyll theme gem
 remote_theme: sylhare/Type-on-Strap                     # If using as a remote_theme in github

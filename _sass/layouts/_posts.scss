@@ -1,8 +1,14 @@
 .comments {
   @extend %padding-post;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid var(--border);
   float: left;
   width: 100%;
+
+  iframe {
+    width: 100%;
+    border: none;
+    min-height: 500px;
+  }
 }
 
 article {
@@ -40,7 +46,7 @@ footer {
 }
 
 header {
-  h1 {
+  h1, h2 {
     margin: 0;
   }
 }
@@ -52,15 +58,35 @@ header {
   text-transform: uppercase;
 }
 
+.last-modified {
+  color: var(--meta);
+  font-size: 0.8em;
+  font-style: italic;
+  margin-top: 0.5em;
+}
+
 /* --- Post info --- */
 .post-info {
-  /* For border in author
-  border: 1px solid var(--border);
-  padding-left: 0.5em;
-  */
   border-radius: 1em;
   padding-right: 0.5em;
   display: inline-flex;
+  flex-direction: column;
+  max-width: 100%;
+
+  .author-info {
+    display: flex;
+    align-items: center;
+  }
+
+  .post-meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    .meta:only-child {
+      margin: 0 auto;
+    }
+  }
 
   a {
     display: flex;
@@ -82,6 +108,16 @@ header {
     height: 100%;
     margin-right: 0.5em;
   }
+
+  .meta-separator {
+    color: var(--meta);
+    margin: 0 0.5em;
+    white-space: nowrap;
+  }
+
+  .meta {
+    white-space: nowrap;
+  }
 }
 
 /* --- Feature image --- */
@@ -101,9 +137,9 @@ header {
     margin-bottom: 0;
     padding: 3.6% $padding-large;
 
-    .meta {
+    .meta, .meta-separator, .last-modified {
       color: var(--header-text);
-      filter: opacity(0.7);
+      opacity: 0.7;
     }
   }
 
@@ -124,15 +160,12 @@ header {
 
 /*-- feature-image Responsive scrolling --*/
 .feature-image header {
-  @media screen and (max-width: $break) {
-    padding: $padding-large*1.5 $padding-small;
-  }
-
   @media screen and (min-width: $break) {
     background-size: 120% auto;
   }
 
   @media screen and (max-width: $break) {
+    padding: $padding-large*1.5 $padding-small;
     background-size: 200% auto;
   }
 
@@ -149,9 +182,7 @@ header {
   h5 { color: var(--h5); }
   h6 { color: var(--h6); }
 
-  a {
-    :visited {
-      filter: saturate(0.7);
-    }
+  a:visited {
+    filter: saturate(0.7);
   }
 }

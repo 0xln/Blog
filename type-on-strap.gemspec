@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |spec|
   spec.name          = "type-on-strap"
-  spec.version       = "2.4.8"
+  spec.version       = "2.5.1"
   spec.authors       = ["Sylhare", "Rohan Chandra"]
   spec.email         = ["sylhare@outlook.com", "hellorohan@outlook.com"]
 
@@ -17,16 +17,20 @@ Gem::Specification.new do |spec|
 
   spec.files                   = Dir["**/*"].select do |f|
     f.match(%r!^(assets/(js|css|fonts|data)/|_(includes|layouts|sass)/|_data/(icons_builder.yml|language.yml)|(LICENSE|README.md))!i)
+  end.reject do |f|
+    f.match(%r{^assets/css/vendor/.*(?<!\.min)\.css$}i) ||
+    f.match(%r{^assets/js/.*(?<!\.min)\.js$}i)
   end
 
   spec.post_install_message =  <<~MSG
                                Thanks for using Type on strap v2+!
                                MSG
 
-  spec.required_ruby_version   = ">= 2.7.4", "< 4.0"
+  spec.required_ruby_version   = ">= 2.7.2"
 
   spec.add_runtime_dependency "jekyll", ">= 3.8", "< 5.0"
   spec.add_runtime_dependency "jekyll-feed", ">= 0.15.1", "<= 0.17"
   spec.add_runtime_dependency "jekyll-paginate", "~> 1.1.0"
   spec.add_runtime_dependency "jekyll-seo-tag", ">= 2.7.1", "<= 2.8"
+  spec.add_runtime_dependency "kramdown-parser-gfm", ">= 1.1.0"
 end
